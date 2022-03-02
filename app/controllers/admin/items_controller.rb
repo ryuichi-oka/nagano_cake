@@ -10,6 +10,10 @@ class Admin::ItemsController < ApplicationController
     redirect_to "/admin/items"
   end
 
+  def index
+    @items = Item.page(params[:page])
+  end
+
 
   private
 
