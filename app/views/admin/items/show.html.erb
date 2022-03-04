@@ -1,0 +1,53 @@
+<div class="container">
+  <h4 class="px-3 text-left mt-3 mb-5">商品詳細</h4>
+  <div class="row">
+    <div class="col-lg-4">
+      <%= image_tag @item.get_image(300, 250) %>
+    </div>
+    <div class="col-lg-8">
+      <div class="row mb-3">
+        <label class="col-lg-3 col-form-label">商品名</label>
+        <div class="col-lg-6 d-flex align-items-center">
+          <%= @item.name %>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label class="col-lg-3 col-form-label">商品説明</label>
+        <div class="col-lg-6 d-flex align-items-center">
+          <%= @item.introduction %>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label class="col-lg-3 col-form-label">ジャンル</label>
+        <div class="col-lg-6 d-flex align-items-center">
+          <%= @item.genre.name %>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label class="col-lg-3 col-form-label">税込価格<br>(税抜価格)</label>
+        <div class="col-lg-6 d-flex align-items-center">
+          <strong>
+            <%= number_to_currency(@item.with_tax_price) %>
+            (<%= number_to_currency(@item.price) %>)
+            円
+          </strong>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label class="col-lg-3 col-form-label">販売ステータス</label>
+        <div class="col-lg-6 d-flex align-items-center">
+          <% if @item.is_active %>
+            <strong><p class="text-success">販売中</p></strong>
+          <% else %>
+            <strong><p class="text-secondary">販売停止中</p></strong>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3 mx-auto">
+      <%= link_to " 編集する ", edit_admin_item_path(@item.id), class: "btn btn-lg btn-success" %>
+    </div>
+  </div>
+</div>
