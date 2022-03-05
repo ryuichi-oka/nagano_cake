@@ -25,6 +25,15 @@ Rails.application.routes.draw do
 
   end
 
+  scope module: :public do
+    get '/about' => "homes#about", as: "about"
+
+    resources :items, only: [:index, :show]
+
+  end
+
   root to: "public/homes#top"
+
+  get 'search' => "items#search"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
