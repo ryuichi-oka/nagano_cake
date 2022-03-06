@@ -1,6 +1,39 @@
-<div class="main-visual">
-  <%= image_tag 'cake_top.jpg', width: "100%", height: "500px", background_size: "cover" %>
-</div>
 <div class="container">
+  <div class="row">
+    <!--ジャンル検索-->
+    <div class="col-lg-2">
 
+    </div>
+    <div class="col-lg-10 px-0">
+      <img src="assets/top3.jpg" class="img-fluid">
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <h3>ようこそ、ながのCakeへ！</h4>
+          <p>
+            このサイトは、ケーキ販売のECサイトになります。</br>
+            会員でない方も商品の閲覧は出来ますが、購入には会員登録が必要になります。
+          </p>
+        </div>
+      </div>
+      <div class="row border-bottom pb-2">
+        <h3 class="mr-4">NEW ITEMS</h3><span class="d-flex align-items-center">新着商品</span>
+      </div>
+      <div class="row mt-3">
+        <% @items.each do |item| %>
+        <div class="col-lg-3 mb-3">
+          <%= link_to item_path(item.id) do%>
+            <%= image_tag item.get_image(200, 200) %>
+          <% end %>
+          <%= item.name %></br>
+          ￥<%= number_to_currency(item.price) %>
+        </div>
+        <% end %>
+      </div>
+      <div class="row">
+        <div class="ml-auto">
+          <%= link_to "全ての商品を見る＞", items_path %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
