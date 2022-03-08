@@ -1,11 +1,10 @@
-
 <div class="container">
-  <h2 class="px-3 text-left mt-3">新規会員登録</h2>
+  <h2 class="px-3 text-left mt-3">会員情報編集</h2>
   <div class="row mt-5">
     <div class="col-lg-10 mr-auto">
-      <%= form_with model: @customer, url: customer_registration_path, local: true do |f| %>
+      <%= form_with model: @customer, url: customers_path, method: :patch, local: true do |f| %>
       <div class="row mb-2">
-        <label class="col-lg-2 col-form-label" style="font-weight: bold;">名前</label>
+        <label class="col-lg-2 col-form-label" style="font-weight: bold;">氏名</label>
         <label class="col-lg-1 col-form-label text-right pr-0" style="font-size: 12px; font-weight: bold;">（姓）</label>
         <div class="col-lg-3">
           <%= f.text_field :last_name, class: "form-control last_name", placeholder: "姓" %>
@@ -27,12 +26,6 @@
         </div>
       </div>
       <div class="row mb-2">
-        <label class="col-lg-3 col-form-label" style="font-weight: bold;">メールアドレス</label>
-        <div class="col-lg-3">
-          <%= f.email_field :email, class: "form-control email", placeholder: "sample@example.com" %>
-        </div>
-      </div>
-      <div class="row mb-2">
         <label class="col-lg-3 col-form-label" style="font-weight: bold;">郵便番号(ハイフンなし)</label>
         <div class="col-lg-3">
           <%= f.text_field :postal_code, class: "form-control postal_code", placeholder: "0000000" %>
@@ -51,30 +44,21 @@
         </div>
       </div>
       <div class="row mb-2">
-        <label class="col-lg-3 col-form-label" style="font-weight: bold;">パスワード(6文字以上)</label>
+        <label class="col-lg-3 col-form-label" style="font-weight: bold;">メールアドレス</label>
         <div class="col-lg-3">
-          <%= f.password_field :password, class: "form-control new_password" %>
-        </div>
-      </div>
-      <div class="row mb-2">
-        <label class="col-lg-3 col-form-label" style="font-weight: bold;">パスワード(確認用)</label>
-        <div class="col-lg-3">
-          <%= f.password_field :password_confirmation, class: "form-control new_password" %>
+          <%= f.email_field :email, class: "form-control email", placeholder: "sample@example.com" %>
         </div>
       </div>
       <div class="row mb-3">
         <span class="col-lg-3"></span>
-        <div class="col-lg-3">
-          <%= f.submit "　　新規登録　　", class: "btn btn-success" %>
+        <div class="col-lg-4">
+          <%= f.submit "　　編集内容を保存　　", class: "btn btn-success" %>
+        </div>
+        <div class="col-lg-2">
+          <%= link_to "　退会する　", unsubscribe_path, class: "btn btn-danger" %>
         </div>
       </div>
       <% end %>
     </div>
   </div>
-  <h4 class="px-3 text-left mt-3">既に登録済みの方</h2>
-  <div class="px-5">
-    <%= link_to "こちら", new_customer_session_path %> <span>からログインしてください。</span>
-  </div>
 </div>
-
-
