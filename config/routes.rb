@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :order_details, only: [:update]
 
   end
-  
+
 
 # 会員側のルーティング
   scope module: :public do
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     post '/orders/confirm' => "orders#confirm", as: "confirm"
     get '/orders/thanks' => "orders#thanks", as: "thanks"
 
-    resources :addresses, only: [:index, :create, :edit, :update, :destroy]
+    resources :addresses, only: [:new, :index, :create, :edit, :update, :destroy]
 
   end
 
