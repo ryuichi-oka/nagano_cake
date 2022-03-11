@@ -1,3 +1,33 @@
 // Place all the styles related to the public/items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.index-item-name {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.index-item-price {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.item-name {
+  font-weight: bold;
+}
+.item-price {
+  font-size: 25px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+select {
+  width: 100px;
+  height: 38px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+option {
+  width: 80px;
+  font-weight: bold;
+}

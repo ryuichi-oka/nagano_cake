@@ -5,15 +5,17 @@
 
     </div>
     <div class="col-lg-10">
-      <h2 class="mt-5 text-left d-inline-block">商品一覧</h2><span class="align-text-bottom">(全<%= @items.count %>件)</span>
+      <div class="row border-bottom pb-2">
+        <h2 class="mr-5">商品一覧</h2><span class="d-flex align-items-center">(全<%= @items.count %>件)</span>
+      </div>
       <div class="row row-cols-4 mt-5">
         <% @items.each do |item| %>
         <div class="col-lg-3 mb-4">
           <%= link_to item_path(item.id) do%>
-            <%= image_tag item.get_image(200, 150) %>
+            <%= image_tag item.get_image(225, 150) %>
           <% end %>
-          <%= item.name %></br>
-          ￥<%= number_to_currency(item.price) %>
+          <p class="index-item-name mt-2"><%= item.name %></p>
+          <p class="index-item-price mt-1">￥<%= number_to_currency(item.price) %></p>
         </div>
         <% end %>
       </div>
