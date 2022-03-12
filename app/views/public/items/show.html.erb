@@ -11,7 +11,7 @@
       <h4 class="item-name"><%= @item.name %></h4>
       <p class="item-introduction"><%= @item.introduction %></p>
       <p class="item-price mt-5">￥<%= number_to_currency(@item.with_tax_price) %></p><span>(税込)</span>
-      <%= form_with model: @item, url: cart_items_path, method: :post, local: true do |f| %>
+      <%= form_with model: @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
       <div class="row mt-3">
         <%= f.hidden_field :item_id, :value => @item.id %>
         <div class="col-lg-3 mx-auto">

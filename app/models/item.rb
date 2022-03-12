@@ -13,6 +13,7 @@ class Item < ApplicationRecord
 
   has_many :order_details
   belongs_to :genre
+  has_many :cart_items
 
 ##消費税を求めるメソッド
   def with_tax_price

@@ -1,3 +1,19 @@
 // Place all the styles related to the public/cart_items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+table {
+  align-items: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.item-name {
+  padding-left: 15px;
+}
+
+
+td select {
+   width: 50px;
+   height: 30px;
+   border-radius: 5px;
+}
