@@ -1,0 +1,14 @@
+<div class="container">
+  <h2 class="px-3 mt-5 text-left">注文情報入力</h2>
+  <%= form_with model: @order, url: orders_path, local: true do |f| %>
+  <div class="payment-method mt-5">
+    <h5>支払方法</h5>
+    <div class="radio-button">
+      <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+      <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %></br>
+      <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+      <%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %>
+    </div>
+  </div>
+  <% end %>
+</div>
