@@ -3,14 +3,15 @@
   <div class="row mb-3">
     <label class="col-lg-3 col-form-label">購入者</label>
     <div class="col-lg-6 d-flex align-items-center">
-      <%= link_to admin_customer_path(@customer.id) do %>
-      <%= @order.name %>
+      <%= link_to admin_customer_path(@order.customer_id) do %>
+        <%= @order.customer.last_name %><%= @order.customer.first_name %>
+      <% end %>
     </div>
   </div>
   <div class="row mb-3">
     <label class="col-lg-3 col-form-label">注文日</label>
     <div class="col-lg-6 d-flex align-items-center">
-      <%= @order.created_at %>
+      <%= @order.created_at.strftime("%Y/%m/%d") %>
     </div>
   </div>
   <div class="row mb-3">
@@ -30,7 +31,7 @@
     <label class="col-lg-3 col-form-label">注文ステータス</label>
     <div class="col-lg-6 d-flex align-items-center">
       <%= form_with model: @order, url: admin_order_path(@order.id), local: true do |f|  %>
-        <%= f.select :status, Order.status_i18n.keys.to_a %>
+        <%= f.select :status, @order.status_i18n.keys.to_a %>
         <%= f.submit "更新", class: "btn btn-sm btn-success" %>
       <% end %>
     </div>
@@ -38,7 +39,7 @@
   <div class="row">
     <div class="col-lg-8">
       <table class="table">
-        <thead class="table-light">
+        <thead class="table-active">
           <tr>
             <th>商品名</th>
             <th>単価（税込）</th>
@@ -50,13 +51,13 @@
         <tbody>
           <% @order_details.each do |order_detail| %>
           <tr>
-            <td><%= order_detail.item_id.name %></td>
+            <td><%= order_detail.item.name %></td>
             <td><%= order_detail.price %></td>
             <td><%= order_detail.amount %></td>
-            <td><%= order_detail.price * order_detailamount %></td>
+            <td><%= number_to_currency(order_detail.subtotal) %>円</td>
             <td>
-              <%= form_with model: @order_detail, url: admin_order_detail_path(@order.id), local: true do |f|  %>
-                <%= f.select :maiking_status, OrderDetail.maiking_status_i18n.keys.to_a %>
+              <%= form_with model: @order_detail, url: admin_order_detail_path(@order_detail.id), local: true do |f|  %>
+                <%= f.select :maiking_status, @order_detail.maiking_status_i18n.keys.to_a %>
                 <%= f.submit "更新", class: "btn btn-sm btn-success" %>
               <% end %>
             </td>

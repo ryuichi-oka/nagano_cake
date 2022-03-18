@@ -5,14 +5,21 @@ class Public::OrdersController < ApplicationController
 
   def create
     # 注文を作成
-    @order = Order.new(order_params)
+    @order = current_customer.orders.new(order_params)
+    cart_items = current_customer.cart_items.all
     # カート内商品を取得し商品合計を計算する（小計を足していく）
     @order.save
-
+    cart_items.each do |cart_item|
     # 注文詳細を作成
-    # ...
-
+      order_detail = OrderDetail.new
+      order_detail.item_id = cart_item.item_id
+      order_detail.order_id = @order.id
+      order_detail.amount = cart_item.amount
+      order_detail.price = cart_item.item.with_tax_price
+      order_detail.save
+    end
     # 現在注文中の会員のカート内商品をすべて削除
+    cart_items.destroy_all
     redirect_to thanks_path
   end
 
@@ -28,7 +35,11 @@ class Public::OrdersController < ApplicationController
       @order.address = @address.address
       @order.name = @address.name
     elsif params[:order][:select_address] == "2"
-      @order.save
+      address_new = current_customer.addresses.new(address_params)
+      if address_new.save
+      else
+        render :new
+      end
     else
       render :new
     end
@@ -39,14 +50,25 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = current_customer.orders.all
+
   end
 
   def show
+    @order = current_customer.orders.find(params[:id])
+    @order_details = @order.order_details
+    @total_price = @order_details.sum{|order_detail|order_detail.subtotal}
+    @order.shipping_cost = "800"
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:postal_code, :address, :name, :payment_method)
+    params.require(:order).permit(:postal_code, :address, :name, :payment_method, :total_payment)
   end
+
+  def address_params
+    params.require(:order).permit(:postal_code, :address, :name)
+  end
+
 end

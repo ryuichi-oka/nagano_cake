@@ -17,4 +17,13 @@
   justify-content: center;
 }
 
+.nav-item {
+  font-size: 12px;
+  transition: all 0.5s;
+}
+
+.nav-item:hover {
+  background-color: #e0f0ff;
+  font-weight: bold;
+}
 

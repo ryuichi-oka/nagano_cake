@@ -28,13 +28,17 @@ Rails.application.routes.draw do
 
     resources :items, only: [:index, :show]
 
+    resources :genres, only: [:index] do
+      resources :items, only: [:index]
+    end
+
     resource :customers, only: [:show, :edit, :update]
     get '/customers/unsubscribe' => "customers#unsubscribe", as: "unsubscribe"
     patch '/customers/withdraw' => "customers#withdraw", as: "withdraw"
 
-    resources :orders, only: [:new, :create, :index, :show]
-    post '/orders/confirm' => "orders#confirm", as: "confirm"
     get '/orders/thanks' => "orders#thanks", as: "thanks"
+    post '/orders/confirm' => "orders#confirm", as: "confirm"
+    resources :orders, only: [:new, :create, :index, :show]
 
     resources :addresses, only: [:new, :index, :create, :edit, :update, :destroy]
 

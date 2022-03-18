@@ -1,0 +1,8 @@
+<p class="border-bottom pb-2" style="font-weight:bold;">ジャンル検索</p>
+  <ul class="list-group">
+  <% genres.each do |genre| %>
+    <li class="list-item mt-2" style="list-style: none;">
+      <%= link_to genre.name, genre_items_path(genre.id), class: "text-dark" %>(<%= genre.items.where(is_active: true).count %>)
+    </li>
+  <%end %>
+  </ul>
