@@ -11,7 +11,7 @@ ja:
         ready: "発送準備中"
         sent: "発送済み"
     order_detail:
-      maiking_status:
+      making_status:
         cannot: "製作不可"
         waiting: "製作待ち"
         product: "製作中"

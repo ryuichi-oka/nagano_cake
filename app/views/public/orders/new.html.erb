@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="px-3 mt-5 text-left">注文情報入力</h2>
+  <h2 class="px-3 mt-5">注文情報入力</h2>
   <%= form_with model: @order, url: confirm_path, local: true do |f| %>
   <div class="payment-method mt-5">
     <h5>支払方法</h5>
@@ -18,12 +18,12 @@
       <span class="px-5">〒<%= current_customer.postal_code %> <%= current_customer.address %></span></br>
       <span class="px-5"><%= current_customer.last_name %><%=current_customer.first_name %></span>
     </div>
-    <div class="radio-button">
+    <div class="radio-button mt-5">
       <%= f.radio_button :select_address, 1 %>
       <%= f.label :select_address_1, "登録済住所から選択" %></br>
       <span class="px-5"><%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %></span>
     </div>
-    <div class="radio-button">
+    <div class="radio-button mt-5">
       <%= f.radio_button :select_address, 2 %>
       <%= f.label :select_address_2, "新しいお届け先" %></br>
       <div class="row mt-3 px-5">

@@ -1,3 +1,24 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.item_name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.item_price {
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+
+.item_group img {
+  transition: 0.3s;
+}
+
+.item_group a:hover img {
+  opacity: 0.8;
+}
+

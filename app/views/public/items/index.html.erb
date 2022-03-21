@@ -6,28 +6,32 @@
     </div>
     <div class="col-lg-10">
       <div class="row border-bottom pb-2">
-        <h2 class="mr-5">
-        <% if params[:genre_id] %>
-          <%= @genre.name + "一覧" %>
-        <% else %>
-          商品一覧
-        <% end %>
+        <h2 class="mr-5 title">
+        <span class="-main">
+          <% if params[:genre_id] %>
+            <%= @genre.name + "一覧" %>
+          <% else %>
+            商品一覧
+          <% end %>
+        </span>
+        <span class="-sub">
+          <% if params[:genre_id] %>
+            (全<%= @genre.items.where(is_active: true).count %>件)
+          <% else %>
+            (全<%= Item.where(is_active: true).count %>件)
+          <% end %>
+        </span>
         </h2>
-        <% if params[:genre_id] %>
-          <span class="d-flex align-items-center">(全<%= @genre.items.where(is_active: true).count %>件)</span>
-        <% else %>
-          <span class="d-flex align-items-center">(全<%= Item.where(is_active: true).count %>件)</span>
-        <% end %>
       </div>
 
       <div class="row row-cols-4 mt-5">
         <% @items.each do |item| %>
-        <div class="col-lg-3 mb-4">
+        <div class="col-lg-3 mb-4 item_group">
           <%= link_to item_path(item.id) do%>
-            <%= image_tag item.get_image(225, 150) %>
+            <%= image_tag item.get_image(200, 133) %>
           <% end %>
-          <p class="index-item-name mt-2"><%= item.name %></p>
-          <p class="index-item-price mt-1">￥<%= number_to_currency(item.price) %></p>
+          <h4 class="item_name mt-3"><%= item.name %></h4>
+          <span class="item_price"><%= number_to_currency(item.with_tax_price) %></span><span style="font-size: 13px;">円 (税込)</span>
         </div>
         <% end %>
       </div>

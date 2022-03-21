@@ -7,33 +7,33 @@
       <div class="row mb-3">
         <label class="col-lg-3 col-form-label">商品画像</label>
         <div class="col-lg-8">
-          <%= f.file_field :image, class: "form-control-file item_image" %>
+          <%= f.file_field :image, class: "form-control-file image" %>
         </div>
       </div>
       <div class="row mb-3">
         <label class="col-lg-3 col-form-label">商品名</label>
         <div class="col-lg-8">
-          <%= f.text_field :name, class: "form-control item_name" %>
+          <%= f.text_field :name, class: "form-control name" %>
         </div>
       </div>
       <div class="row mb-3">
         <label class="col-lg-3 col-form-label">商品説明</label>
         <div class="col-lg-8">
-          <%= f.text_area :introduction, class: "form-control item_introduction", rows: "10" %>
+          <%= f.text_area :introduction, class: "form-control introduction", rows: "10" %>
         </div>
       </div>
       <div class="row mb-3">
         <label class="col-lg-3 col-form-label">ジャンル</label>
         <div class="col-lg-8">
-          <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--", class: "form-select item_genre_id" %>
+          <%= f.collection_select :genre_id, Genre.all, :id, :name, {prompt: "選択してください"}, {class: "custom-select genre_id"} %>
         </div>
       </div>
       <div class="row mb-3">
         <label class="col-lg-3 col-form-label">税抜価格</label>
         <div class="col-lg-8">
-          <%= f.text_field :price, class: "form-control item_price" %>
+          <%= f.text_field :price, class: "form-control price" %>
         </div>
-        <span class="col-lg-1 px-0 text-left">円</span>
+        <span class="col-lg-1 px-0 pt-2 text-left">円</span>
       </div>
       <div class="row mb-3">
         <label class="col-lg-3 col-form-label">販売ステータス</label>
