@@ -60,3 +60,19 @@ footer {
   height: 100px;
   margin-top: 20px;
 }
+
+.error_message {
+  font-size: 14px;
+  color: red;
+}
+
+.form_group {
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.form_group .search {
+  border: none;
+  background-color: white;
+}

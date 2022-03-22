@@ -17,8 +17,22 @@
           <div class="container">
             <a class="navbar-brand" href="/"><%= image_tag 'logo2.png', size: '100x100' %></a>
             <% if customer_signed_in? %>
-            <span class="col-lg-4 mx-auto"><%= current_customer.last_name %><%= current_customer.first_name %>さん<i class="fa-solid fa-user-check"></i></span>
+            <span class="col-lg-2 mx-auto"><%= current_customer.last_name %><%= current_customer.first_name %>さん<i class="fa-solid fa-user-check"></i></span>
             <% end %>
+            <div class="col-lg-4 mx-auto">
+              <%= search_form_for @q, url: items_path do |f| %>
+              <div class="row form_group">
+                <div class="col-lg-10 px-0">
+                  <%= f.search_field :name_cont, placeholder: "商品名で探す", class: "search form-control" %>
+                </div>
+                <div class="col-lg-2 ml-auto">
+                  <%= f.button :type => "submit", class: "search btn" do %>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  <% end %>
+                </div>
+              </div>
+              <% end %>
+            </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -69,7 +83,7 @@
                   <%= link_to "ログイン", new_customer_session_path, class: "nav-link text-dark" %>
                 </li>
                 <% end %>
-              </ul>
+                </ul>
             </div>
           </div>
         </nav>

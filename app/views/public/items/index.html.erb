@@ -18,7 +18,7 @@
           <% if params[:genre_id] %>
             (全<%= @genre.items.where(is_active: true).count %>件)
           <% else %>
-            (全<%= Item.where(is_active: true).count %>件)
+            (全<%= @q.result.where(is_active: true).count %>件)
           <% end %>
         </span>
         </h2>

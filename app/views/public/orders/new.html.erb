@@ -13,7 +13,7 @@
   <div class="address">
     <h5>お届け先</h5>
     <div class="radio-button">
-      <%= f.radio_button :select_address, 0 %>
+      <%= f.radio_button :select_address, 0, required: true %>
       <%= f.label :select_address_0, "ご自身の住所" %></br>
       <span class="px-5">〒<%= current_customer.postal_code %> <%= current_customer.address %></span></br>
       <span class="px-5"><%= current_customer.last_name %><%=current_customer.first_name %></span>
@@ -21,7 +21,7 @@
     <div class="radio-button mt-5">
       <%= f.radio_button :select_address, 1 %>
       <%= f.label :select_address_1, "登録済住所から選択" %></br>
-      <span class="px-5"><%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %></span>
+      <span class="px-5"><%= f.select :address_id, options_from_collection_for_select(current_customer.addresses.all, :id, :address_display) %></span>
     </div>
     <div class="radio-button mt-5">
       <%= f.radio_button :select_address, 2 %>

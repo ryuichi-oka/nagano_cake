@@ -7,6 +7,7 @@
     </div>
     <div class="col-lg-3">
       <%= f.text_field :postal_code, class: "form-control postal_code" %>
+      <%= render 'layouts/error_messages', model: @address, attribute: :postal_code %>
     </div>
   </div>
   <div class="row mt-3">
@@ -15,6 +16,7 @@
     </div>
     <div class="col-lg-6">
       <%= f.text_field :address, class: "form-control address" %>
+      <%= render 'layouts/error_messages', model: @address, attribute: :address %>
     </div>
   </div>
   <div class="row mt-3">
@@ -23,6 +25,7 @@
     </div>
     <div class="col-lg-3">
       <%= f.text_field :name, class: "form-control name" %>
+      <%= render 'layouts/error_messages', model: @address, attribute: :name %>
     </div>
     <div class="col-lg-3"></div>
     <div class="col-lg-3">

@@ -8,6 +8,7 @@
         <span class="col-lg-2 ml-auto">メールアドレス</span>
         <div class="col-lg-6 mr-auto">
           <%= f.email_field :email, class: "form-control email", placeholder: "sample@example.com", autocomplete: "email" %>
+          <%= render 'layouts/error_messages', model: @customer, attribute: :email %>
         </div>
       </div>
 
@@ -15,6 +16,7 @@
         <span class="col-lg-2 ml-auto">パスワード</span>
         <div class="col-lg-6 mr-auto">
           <%= f.password_field :password, class: "form-control password", autocomplete: "current-password" %>
+          <%= render 'layouts/error_messages', model: @customer, attribute: :password %>
         </div>
       </div>
 

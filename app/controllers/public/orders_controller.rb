@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
+  
   def new
     @order = Order.new
   end
@@ -35,7 +37,7 @@ class Public::OrdersController < ApplicationController
       @order.address = @address.address
       @order.name = @address.name
     elsif params[:order][:select_address] == "2"
-      address_new = current_customer.addresses.new(address_params)
+      address_new = current_customer.orders.new(order_params)
       if address_new.save
       else
         render :new
